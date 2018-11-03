@@ -10,6 +10,18 @@ class Player extends React.Component {
             isEye: false,
             heroes: ['Torm', 'Sir Moo', 'Goldfinga', 'Brockenstock', 'Murka Mistcleaver', 'Lady Mary', 'Lanky Lowshot', 'Aristide'],
             dmg: 0,
+            editing: false,
+        }
+    }
+
+    handleName = (e) => {
+        this.setState({player: e.target.value});
+    }
+
+    changeName = (e) => {
+        console.log(e.key)
+        if (e.key === 'Enter') {
+            this.setState({editing: false});
         }
     }
 
@@ -29,14 +41,23 @@ class Player extends React.Component {
 
     //handles if eye symbol is facing up
     handleIsEye = (e) => {
-
         this.setState({isEye: !this.state.isEye});
     }
 
+    editName = () => {
+        this.setState({editing: true})
+    }
+
     render () {
+
         return (
             <div className="player">
-                <p>{this.state.player}</p>
+                {
+                    this.state.editing ?
+                    <input value={this.state.player} type="text" onChange={this.handleName} onKeyUp={this.changeName}></input>
+                    :
+                    <p onClick={this.editName}>{this.state.player}</p> 
+                }
                 <select className="selectChar" onChange={this.handleSelect} value={this.state.selected}>
                     {this.state.heroes.map((char, i) => <option key={i}>{char}</option>)}
                 </select>
