@@ -13,13 +13,19 @@ class Player extends React.Component {
             editing: false,
         }
     }
+    
+    //changes name tag to input tag
+    editName = () => {
+        this.setState({editing: true})
+    }
 
+    //changes player name
     handleName = (e) => {
         this.setState({player: e.target.value});
     }
-
+    
+    //changes name input to p tag
     changeName = (e) => {
-        console.log(e.key)
         if (e.key === 'Enter') {
             this.setState({editing: false});
         }
@@ -39,30 +45,27 @@ class Player extends React.Component {
         this.setState({dmg: newValue})
     }
 
-    //handles if eye symbol is facing up
+    //handles if eye boolean
     handleIsEye = (e) => {
         this.setState({isEye: !this.state.isEye});
     }
 
-    editName = () => {
-        this.setState({editing: true})
-    }
 
-    render () {
-
+    render() {
         return (
-            <div className="player">
+            <div className='player'>
                 {
                     this.state.editing ?
-                    <input value={this.state.player} type="text" onChange={this.handleName} onKeyUp={this.changeName}></input>
+                    <input className='editName' value={this.state.player} type='text' onChange={this.handleName} onKeyUp={this.changeName}></input>
                     :
-                    <p onClick={this.editName}>{this.state.player}</p> 
+                    <p onDoubleClick={this.editName}>{this.state.player}</p> 
                 }
-                <select className="selectChar" onChange={this.handleSelect} value={this.state.selected}>
+                <select className='selectChar' onChange={this.handleSelect} value={this.state.selected}>
+                    <option hidden>Select Hero</option>
                     {this.state.heroes.map((char, i) => <option key={i}>{char}</option>)}
                 </select>
-                <input className="inputDMG" onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type="number"></input>
-                <div className="eyeInput">Eye:<input type='checkbox' onChange={this.handleIsEye}></input></div>
+                <input className='inputDMG' onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type='number'></input>
+                <div className='eyeInput'>Eye:<input type='checkbox' onChange={this.handleIsEye}></input></div>
                 <button>Submit</button>
             </div>
         );
