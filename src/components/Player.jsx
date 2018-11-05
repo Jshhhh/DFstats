@@ -3,9 +3,9 @@ import './Player.scss';
 
 class Player extends React.Component {
     constructor(props) {
-        super()
+        super(props)
         this.state = {
-            player: props.name,
+            player: this.props.name,
             selected: '',
             isEye: false,
             heroes: ['Torm', 'Sir Moo', 'Goldfinga', 'Brockenstock', 'Murka Mistcleaver', 'Lady Mary', 'Lanky Lowshot', 'Aristide'],

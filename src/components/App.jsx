@@ -1,5 +1,6 @@
 import React from 'react';
 import Player from './Player';
+import { connect } from 'react-redux';
 
 const players = ['Justin', 'A', 'B']
 
@@ -15,4 +16,4 @@ const App = () => {
     )
 };
 
-export default App;
+export default connect()(App);
