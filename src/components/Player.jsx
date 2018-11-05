@@ -1,5 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Player.scss';
+
+const mapStateToProps = ({heroes}) => {
+    return {
+        heroes
+    }
+}
 
 class Player extends React.Component {
     constructor(props) {
@@ -8,7 +15,7 @@ class Player extends React.Component {
             player: this.props.name,
             selected: '',
             isEye: false,
-            heroes: ['Torm', 'Sir Moo', 'Goldfinga', 'Brockenstock', 'Murka Mistcleaver', 'Lady Mary', 'Lanky Lowshot', 'Aristide'],
+            // heroes: ['Torm', 'Sir Moo', 'Goldfinga', 'Brockenstock', 'Murka Mistcleaver', 'Lady Mary', 'Lanky Lowshot', 'Aristide'],
             dmg: 0,
             editing: false,
         }
@@ -62,7 +69,7 @@ class Player extends React.Component {
                 }
                 <select className='selectChar' onChange={this.handleSelect} value={this.state.selected}>
                     <option hidden>Select Hero</option>
-                    {this.state.heroes.map((char, i) => <option key={i}>{char}</option>)}
+                    {this.props.heroes.map((char, i) => <option key={i}>{char}</option>)}
                 </select>
                 <input className='inputDMG' onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type='number'></input>
                 <div className='eyeInput'>Eye:<input type='checkbox' onChange={this.handleIsEye}></input></div>
@@ -72,4 +79,4 @@ class Player extends React.Component {
     }
 };
 
-export default Player;
+export default connect(mapStateToProps)(Player);
