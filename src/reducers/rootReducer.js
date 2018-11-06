@@ -1,9 +1,11 @@
 import { ADD_PLAYER, CHANGE_NAME } from '../actions/playerActions';
+import * as heroList from '../heroes.json';
 
 const initialState = {
     players: ['Player1', 'Player2', 'Player3'],
     playerCount: 3,
-    heroes: ['Torm', 'Sir Moo', 'Goldfinga', 'Brockenstock', 'Murka Mistcleaver', 'Lady Mary', 'Lanky Lowshot', 'Aristide'],
+    heroes: heroList.default,
+    filteredHeroes: [],
 };
 
 const rootReducer = (state=initialState, action) => {
@@ -19,8 +21,8 @@ const rootReducer = (state=initialState, action) => {
             } else return state;
         case CHANGE_NAME:
             let newPlayerName = state.players;
-            console.log(state.players, action.payload)
             newPlayerName[action.payload.id] = action.payload.name;
+            
             return {
                 ...state,
                 players: newPlayerName
