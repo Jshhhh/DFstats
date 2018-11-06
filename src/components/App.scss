@@ -19,6 +19,9 @@ $main-font:'Pattaya', sans-serif;
     > svg {
         margin-left: 4rem;
         padding: 25px;
+        > path {
+            fill: none
+        }
     }
 }
 

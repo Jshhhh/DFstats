@@ -9,7 +9,7 @@ const App = (props) => {
         <section className="main-sec">
             <h1 className="header">DF Stats</h1>
             <section className="ui-sec">
-                <Datavis data={[5,10,1,3]} size={[500,250]} />
+                <Datavis />
                 <Players />
             </section>
         </section>
