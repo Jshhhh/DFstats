@@ -12,11 +12,13 @@ $main-font:'Pattaya', sans-serif;
     margin-bottom: 4rem;
 }
 
-svg {
-    float: right;
+.ui-sec {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    > svg {
+        margin-left: 4rem;
+        padding: 25px;
+    }
 }
 
-.players {
-    float: left;
-    margin-right: 5rem;
-}
