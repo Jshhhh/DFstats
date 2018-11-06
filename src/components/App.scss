@@ -3,4 +3,20 @@ $main-font:'Pattaya', sans-serif;
 
 .main-sec {
     font-family: $main-font;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    margin-bottom: 4rem;
+}
+
+svg {
+    float: right;
+}
+
+.players {
+    float: left;
+    margin-right: 5rem;
 }

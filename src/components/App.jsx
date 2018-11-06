@@ -1,24 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import Players from './Players'
-import { ADD_PLAYER, addPlayer } from '../actions/playerActions';
+import Players from './Players';
+import Datavis from './Datavis';
 import './App.scss';
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addPlayer: () => dispatch(addPlayer()),
-    }
-};
 
 const App = (props) => {
     return (
         <section className="main-sec">
-            <h1>DF Stats</h1>
-            <Players></Players>
-            <button onClick={props.addPlayer}>Add Player</button>
+            <h1 className="header">DF Stats</h1>
+            <section className="ui-sec">
+                <Datavis data={[5,10,1,3]} size={[500,250]} />
+                <Players />
+            </section>
         </section>
     )
 };
 
-export default connect(mapDispatchToProps)(App);
+export default App;
