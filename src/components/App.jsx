@@ -1,19 +1,24 @@
 import React from 'react';
-import Player from './Player';
 import { connect } from 'react-redux';
 
-const players = ['Justin', 'A', 'B']
+import Players from './Players'
+import { ADD_PLAYER, addPlayer } from '../actions/playerActions';
+import './App.scss';
 
-const App = () => {
+const mapDispatchToProps = dispatch => {
+    return {
+        addPlayer: () => dispatch(addPlayer()),
+    }
+};
+
+const App = (props) => {
     return (
-        <div>
+        <section className="main-sec">
             <h1>DF Stats</h1>
-            {
-                players.map((player, i) => <Player key={i} name={player}></Player>)
-            }
-            <button>Add Player</button>
-        </div>
+            <Players></Players>
+            <button onClick={props.addPlayer}>Add Player</button>
+        </section>
     )
 };
 
-export default connect()(App);
+export default connect(mapDispatchToProps)(App);
