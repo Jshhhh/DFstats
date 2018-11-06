@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleOrdinal, scaleBand } from 'd3-scale';
 import { line } from 'd3-shape';
 import { select } from 'd3-selection';
 import * as axis from 'd3-axis';
@@ -27,12 +27,12 @@ class Datavis extends React.Component {
         const y = scaleLinear()
                     .domain([0, 100])
                     .range([height, 0]);
-        const x = scaleLinear()
-                    .domain([0, 100])
+        const x = scaleBand()
+                    .domain(['DPS', 'Hit%', 'Special%'])
                     .range([0, height]);
 
         const yAxis = axis.axisLeft(y);
-        const xAxis = axis.axisBottom(x);
+        const xAxis = axis.axisBottom(x).tickSizeOuter(0);
 
         select(node)
             .append('g')
