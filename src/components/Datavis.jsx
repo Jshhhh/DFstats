@@ -7,6 +7,11 @@ import { select } from 'd3-selection';
 import * as axis from 'd3-axis';
 
 
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
 
 class Datavis extends React.Component {
     constructor(props){
@@ -25,17 +30,7 @@ class Datavis extends React.Component {
     createLineChart() {
         const node = this.node;
         const height = 250;
-        const translate = 'translate(25, 15)';
-        const data = [
-            {
-                name: 'Player1',
-                data: [{cat: 'DPS', val: 4},{cat: 'Hit%', val: .5}, { cat: 'Special%', val: .2}]
-            },
-            {
-                name: 'Player2',
-                data: [{cat: 'DPS', val: 8},{cat: 'Hit%', val: .9}, { cat: 'Special%', val: .5}]
-            }
-        ];
+        const strokeColors = ['red', 'blue', 'purple', 'green', 'yellow', 'orange', 'pink'];
 
         const y = scaleLinear()
                     .domain([0, 100])
@@ -71,13 +66,13 @@ class Datavis extends React.Component {
             .attr('transform', 'translate(25, 15)')
             .call(yAxis);
         
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < this.props.data.length; i++) {
             select(node)
                 .append('path')
-                .attr('d',dataLine(data[i].data))
+                .attr('d',dataLine(this.props.data[i].data))
                 .attr('transform', `translate(67, ${15})`)
-                .attr('stroke-width', 1)
-                .attr('stroke', 'black');
+                .attr('stroke-width', 2)
+                .attr('stroke', `${strokeColors[i]}`);
         }
     }
 
@@ -89,4 +84,4 @@ render() {
 }
 
 
-export default Datavis;
+export default connect(mapStateToProps)(Datavis);
