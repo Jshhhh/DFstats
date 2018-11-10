@@ -89,8 +89,8 @@ class Player extends React.Component {
                 <select className='selectChar' onChange={this.handleSelect} value={this.state.selected}>
                     <option hidden>Select Hero</option>
                     {this.props.heroes.map((char, i) => <option key={i}>{char}</option>)}
-                </select>
-                <input className='inputDMG' onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type='number'></input>
+                </select> 
+                DMG:<input className='inputDMG' onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type='number'></input>
                 <div className='eyeInput'>Special:<input type='checkbox' onChange={this.handleIsEye}></input></div>
                 <button>Submit</button>
             </div>
