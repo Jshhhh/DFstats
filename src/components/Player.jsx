@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { changeName } from '../actions/playerActions';
 
 import './Player.scss';
@@ -72,8 +73,15 @@ class Player extends React.Component {
         this.setState({isEye: !this.state.isEye});
     }
 
+    //handle submit data
+    submitData = ({player, selectedHero, dmg, isEye}) => {
+        axios.post('/submit', {player, selectedHero, dmg, isEye})
+            .then((res) => console.log('successful submission'))
+            .catch((err) => console.error('unsuccessful submission, try again'));
+    }
 
     render() {
+        const strokeColors = ['red', 'blue', 'purple', 'green', 'yellow', 'orange', 'pink'];
         return (
             <div className='player'>
                 {
@@ -84,7 +92,7 @@ class Player extends React.Component {
                         onFocus={this.handleFocus}
                     />
                     :
-                    <p className="player-name" onDoubleClick={this.editName}>{this.state.player}</p> 
+                    <p className="player-name" style={{color: strokeColors }} onDoubleClick={this.editName}>{this.state.player}</p> 
                 }
                 <select className='selectChar' onChange={this.handleSelect} value={this.state.selected}>
                     <option hidden>Select Hero</option>
@@ -92,7 +100,7 @@ class Player extends React.Component {
                 </select> 
                 DMG:<input className='inputDMG' onChange={this.handleDmgInput} value={this.state.dmg} min={0} max={50} type='number'></input>
                 <div className='eyeInput'>Special:<input type='checkbox' onChange={this.handleIsEye}></input></div>
-                <button>Submit</button>
+                <button onClick={}>Submit</button>
             </div>
         );
     }

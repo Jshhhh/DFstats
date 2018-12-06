@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Players from './Players';
-import Datavis from './Datavis';
+import LineGraph from './LineGraph';
 import './App.scss';
 
 const App = (props) => {
@@ -9,7 +9,7 @@ const App = (props) => {
         <section className="main-sec">
             <h1 className="header">DF Stats</h1>
             <section className="ui-sec">
-                <Datavis />
+                <LineGraph />
                 <Players />
             </section>
         </section>
