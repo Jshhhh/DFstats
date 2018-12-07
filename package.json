@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -w",
-    "lint": "eslint --fix ./src/components/LineGraph.jsx"
+    "lint": "eslint --fix ./src/components/Player.jsx"
   },
   "author": "",
   "license": "ISC",

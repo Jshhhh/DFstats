@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { line } from 'd3-shape';
 import { select } from 'd3-selection';
 import * as axis from 'd3-axis';
+import PropTypes from 'prop-types';
 
 
-const mapStateToProps = state => ({
-  data: state.data,
-});
+const mapStateToProps = state => (
+  { data: state.data }
+);
 
 class Datavis extends React.Component {
+  static propTypes = { data: PropTypes.arrayOf(PropTypes.object).isRequired };
+
   constructor(props) {
     super(props);
     this.createLineChart = this.createLineChart.bind(this);
@@ -27,6 +29,7 @@ class Datavis extends React.Component {
 
   createLineChart() {
     const { node } = this;
+    const { data } = this.props;
     const height = 250;
     const strokeColors = ['red', 'blue', 'purple', 'green', 'yellow', 'orange', 'pink'];
 
@@ -64,10 +67,10 @@ class Datavis extends React.Component {
       .attr('transform', 'translate(25, 15)')
       .call(yAxis);
 
-    for (let i = 0; i < this.props.data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       select(node)
         .append('path')
-        .attr('d', dataLine(this.props.data[i].data))
+        .attr('d', dataLine(data[i].data))
         .attr('transform', `translate(67, ${15})`)
         .attr('stroke-width', 2)
         .attr('stroke', `${strokeColors[i]}`);
@@ -77,7 +80,7 @@ class Datavis extends React.Component {
   render() {
     return (
       <svg
-        ref={node => this.node = node}
+        ref={(node) => { (this.node = node); }}
         width={300}
         height={300}
       />
