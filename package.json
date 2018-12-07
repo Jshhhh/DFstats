@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w"
+    "build": "webpack -w",
+    "lint": "eslint --fix ./src/components/LineGraph.jsx"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +14,15 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "node-sass": "^4.9.4",
-    "react-redux": "^5.1.0",
     "redux": "^4.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
@@ -34,8 +40,10 @@
     "d3-svg-legend": "2.25.6",
     "d3-transition": "1.1.3",
     "express": "^4.16.4",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-redux": "^6.0.0",
     "redux-thunk": "^2.3.0"
   }
 }
