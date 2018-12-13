@@ -8,8 +8,8 @@ const App = () => (
   <section className="main-sec">
     <h1 className="header">DF Stats</h1>
     <section className="ui-sec">
-      <LineGraph />
       <Players />
+      <LineGraph />
     </section>
   </section>
 );
