@@ -84,7 +84,7 @@ class Player extends React.Component {
     //  handle submit data
     submitData = () => {
       const { player, selectedHero, dmg, isEye } = this.state;
-      axios.post('/submit', { player, selectedHero, dmg, isEye })
+      axios({ method: 'post', url: '/submit', 'Content-Type': 'application/json', data: { player, selectedHero, dmg, isEye } })
         .then(res => console.log('successful submission', res))
         .catch(err => console.error('unsuccessful submission, try again', err));
     }
