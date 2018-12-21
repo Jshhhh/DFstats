@@ -119,7 +119,7 @@ class Player extends React.Component {
             <span>Special:</span>
             <input type="checkbox" onChange={this.handleIsEye} />
           </div>
-          <button type="submit" onClick={this.submitData}>Submit</button>
+          <button type="submit" onClick={this.submitData}>Send</button>
         </div>
       );
     }
