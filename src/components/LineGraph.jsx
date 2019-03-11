@@ -58,20 +58,20 @@ class Datavis extends React.Component {
     select(node)
       .append('g')
       .attr('class', 'x axis')
-      .attr('transform', `translate(25, ${height + 15})`)
+      .attr('transform', `translate(45, ${height + 15})`)
       .call(xAxis);
 
     select(node)
       .append('g')
       .attr('class', 'y axis')
-      .attr('transform', 'translate(25, 15)')
+      .attr('transform', 'translate(45, 15)')
       .call(yAxis);
 
     for (let i = 0; i < data.length; i += 1) {
       select(node)
         .append('path')
         .attr('d', dataLine(data[i].data))
-        .attr('transform', `translate(67, ${15})`)
+        .attr('transform', `translate(87, ${15})`)
         .attr('stroke-width', 2)
         .attr('stroke', `${strokeColors[i]}`);
     }
@@ -81,8 +81,8 @@ class Datavis extends React.Component {
     return (
       <svg
         ref={(node) => { (this.node = node); }}
-        width={300}
-        height={300}
+        width={400}
+        height={400}
       />
     );
   }
