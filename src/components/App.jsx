@@ -6,7 +6,9 @@ import './App.scss';
 
 const App = () => (
   <section className="main-sec">
-    <h1 className="header">DF Stats</h1>
+    <nav>
+      <h1 className="header">DF Stats</h1>
+    </nav>
     <section className="ui-sec">
       <Players />
       <LineGraph />
